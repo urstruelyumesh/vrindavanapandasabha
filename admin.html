@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — पंडा सभा QR प्रणाली</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Rozha+One&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  :root {
+    --saffron:#E8570A; --deep-saffron:#C44A08;
+    --gold:#D4A017; --bright-gold:#F5C842;
+    --cream:#FFF8EE; --deep-cream:#F5ECD8;
+    --maroon:#6B1414; --deep-maroon:#4A0E0E;
+    --text-dark:#2C1810; --text-medium:#5C3D2E;
+    --white:#FFFFFF; --green:#1A6B3A; --red:#B91C1C;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Tiro Devanagari Hindi','Libre Baskerville',serif;background:#EDE0CC;color:var(--text-dark);min-height:100vh}
+
+  /* ── LOCK SCREEN ── */
+  #lock-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,var(--deep-maroon),#8B1A1A)}
+  .lock-card{background:var(--white);border-radius:16px;padding:44px 40px;width:100%;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,0.35);text-align:center}
+  .lock-logo{width:72px;height:72px;background:var(--bright-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 16px}
+  .lock-card h1{font-family:'Rozha One',serif;color:var(--deep-maroon);font-size:1.3rem;margin-bottom:4px}
+  .lock-card p{color:var(--text-medium);font-size:13px;margin-bottom:24px}
+  .lock-card input{width:100%;border:1.5px solid var(--deep-cream);border-radius:8px;padding:12px 14px;font-size:15px;font-family:inherit;margin-bottom:12px;outline:none;text-align:center;letter-spacing:4px;transition:border-color 0.2s}
+  .lock-card input:focus{border-color:var(--saffron)}
+  #lock-btn{width:100%;background:var(--saffron);color:white;border:none;border-radius:8px;padding:13px;font-size:15px;font-family:inherit;font-weight:700;cursor:pointer;transition:background 0.2s}
+  #lock-btn:hover{background:var(--deep-saffron)}
+  #lock-error{color:var(--red);font-size:13px;margin-top:10px;min-height:18px}
+
+  /* ── MAIN APP ── */
+  #app{display:none;flex-direction:column;min-height:100vh}
+
+  header{background:var(--maroon);padding:13px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 3px 12px rgba(0,0,0,0.25);flex-wrap:wrap;gap:10px}
+  .header-left{display:flex;align-items:center;gap:12px}
+  .hlogo{width:44px;height:44px;background:var(--bright-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .htitle .main{font-family:'Rozha One',serif;color:var(--bright-gold);font-size:15px}
+  .htitle .sub{color:rgba(255,248,238,0.65);font-size:11px}
+  .header-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .btn-logout{background:rgba(255,255,255,0.1);color:var(--bright-gold);border:1px solid rgba(245,200,66,0.3);border-radius:6px;padding:6px 14px;font-size:12px;cursor:pointer;font-family:inherit;transition:background 0.2s}
+  .btn-logout:hover{background:rgba(255,255,255,0.18)}
+  .sheet-status{font-size:11px;color:rgba(255,248,238,0.65);white-space:nowrap}
+  .sheet-status.ok{color:#86EFAC}
+  .sheet-status.err{color:#FCA5A5}
+
+  /* ── LAYOUT ── */
+  .body-wrap{display:grid;grid-template-columns:380px 1fr;flex:1}
+  @media(max-width:960px){.body-wrap{grid-template-columns:1fr}}
+
+  /* ── SIDEBAR ── */
+  .sidebar{background:var(--white);border-right:1px solid var(--deep-cream);display:flex;flex-direction:column;height:calc(100vh - 68px);position:sticky;top:0;overflow:hidden}
+  .sidebar-top{padding:16px;border-bottom:1px solid var(--deep-cream);display:flex;flex-direction:column;gap:10px}
+  .stats-row{display:flex;gap:8px}
+  .stat-chip{flex:1;background:var(--deep-cream);border-radius:6px;padding:8px 10px;text-align:center}
+  .stat-chip .num{font-family:'Rozha One',serif;font-size:1.4rem;color:var(--deep-maroon)}
+  .stat-chip .lbl{font-size:10px;color:var(--text-medium)}
+  .search-add{display:flex;gap:8px}
+  .search-add input{flex:1;border:1.5px solid var(--deep-cream);border-radius:7px;padding:9px 12px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.2s}
+  .search-add input:focus{border-color:var(--saffron)}
+  .btn-refresh{background:var(--gold);color:white;border:none;border-radius:7px;padding:9px 14px;font-size:13px;font-weight:700;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+  .btn-refresh:hover{background:var(--deep-saffron)}
+
+  .purohit-list{flex:1;overflow-y:auto}
+  .empty-msg{padding:32px;text-align:center;color:var(--text-medium);font-size:13px;line-height:1.7}
+
+  .list-row{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--deep-cream);cursor:pointer;transition:background 0.15s;position:relative}
+  .list-row:hover{background:#FEFAF5}
+  .list-row.active{background:rgba(232,87,10,0.07);border-left:3px solid var(--saffron)}
+  .list-avatar{width:42px;height:48px;border-radius:5px;background:linear-gradient(135deg,var(--maroon),var(--deep-maroon));overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--bright-gold)}
+  .list-avatar img{width:100%;height:100%;object-fit:cover}
+  .list-info{flex:1;min-width:0}
+  .list-name{font-size:13px;font-weight:700;color:var(--deep-maroon);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .list-meta{font-size:11px;color:var(--text-medium);margin-top:1px}
+  .btn-row-qr{background:var(--saffron);color:white;border:none;border-radius:5px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;transition:background 0.15s}
+  .btn-row-qr:hover{background:var(--deep-saffron)}
+
+  /* ── MAIN AREA ── */
+  .main-area{padding:24px;overflow-y:auto;display:flex;flex-direction:column;gap:20px}
+
+  /* CONFIG BOX */
+  .config-box{background:var(--white);border-radius:12px;padding:20px 24px;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
+  .config-box h3{font-family:'Rozha One',serif;color:var(--deep-maroon);font-size:1rem;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .config-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:600px){.config-grid{grid-template-columns:1fr}}
+  .cfg-group{display:flex;flex-direction:column;gap:5px}
+  .cfg-group.full{grid-column:1/-1}
+  .cfg-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--saffron)}
+  .cfg-group input{border:1.5px solid var(--deep-cream);border-radius:7px;padding:9px 12px;font-size:12px;font-family:inherit;outline:none;transition:border-color 0.2s;background:#FEFAF5}
+  .cfg-group input:focus{border-color:var(--saffron)}
+  .cfg-hint{font-size:10px;color:#aaa;margin-top:3px;line-height:1.5}
+  .btn-load{background:var(--saffron);color:white;border:none;border-radius:7px;padding:10px 20px;font-size:13px;font-family:inherit;font-weight:700;cursor:pointer;transition:background 0.2s;margin-top:4px}
+  .btn-load:hover{background:var(--deep-saffron)}
+
+  /* QR PANEL */
+  #qr-panel{display:none;background:var(--white);border-radius:14px;box-shadow:0 6px 28px rgba(0,0,0,0.08);overflow:hidden}
+  .qr-head{background:linear-gradient(135deg,var(--deep-maroon),var(--maroon));padding:16px 22px;display:flex;align-items:center;gap:10px}
+  .qr-head h2{font-family:'Rozha One',serif;color:var(--bright-gold);font-size:1rem}
+  .qr-body-wrap{padding:26px;display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+
+  /* ID CARD */
+  .id-card{background:linear-gradient(160deg,#FFF8EE,#F5ECD8);border:2px solid var(--gold);border-radius:14px;padding:18px 16px;width:236px;flex-shrink:0;box-shadow:4px 4px 0 rgba(245,200,66,0.6);position:relative;overflow:hidden}
+  .id-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--deep-maroon),var(--saffron),var(--gold),var(--saffron),var(--deep-maroon))}
+  .id-org{font-family:'Rozha One',serif;font-size:10px;color:var(--deep-maroon);text-align:center;margin:6px 0 4px;line-height:1.5}
+  .id-tag{background:var(--maroon);color:var(--bright-gold);font-size:9px;font-weight:700;padding:2px 10px;border-radius:10px;display:inline-block;margin-bottom:10px;letter-spacing:0.5px}
+  .id-photo-area{width:68px;height:80px;border-radius:6px;border:2px solid var(--gold);overflow:hidden;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;background:linear-gradient(135deg,var(--maroon),var(--deep-maroon));font-size:28px;color:var(--bright-gold)}
+  .id-photo-area img{width:100%;height:100%;object-fit:cover}
+  .id-name{font-family:'Rozha One',serif;font-size:13px;color:var(--deep-maroon);text-align:center;margin-bottom:3px}
+  .id-enroll-tag{text-align:center;font-size:9px;color:var(--saffron);font-weight:700;letter-spacing:0.5px;margin-bottom:8px}
+  .id-field{display:flex;justify-content:space-between;font-size:9px;padding:3px 0;border-bottom:1px dashed rgba(0,0,0,0.08);gap:6px}
+  .id-field .l{color:var(--text-medium);flex-shrink:0}
+  .id-field .v{color:var(--text-dark);font-weight:600;text-align:right}
+  .id-qr-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:10px}
+  #qr-div{border:2px solid var(--deep-cream);border-radius:5px;padding:3px;background:white}
+  .id-scan-lbl{font-size:8px;color:var(--text-medium);text-align:center}
+
+  /* ACTIONS */
+  .qr-actions{flex:1;min-width:200px;display:flex;flex-direction:column;gap:12px}
+  .qr-actions h3{font-family:'Rozha One',serif;color:var(--deep-maroon);font-size:1rem}
+  .url-display{background:var(--deep-cream);border-radius:7px;padding:10px 14px;font-size:11px;color:var(--text-medium);word-break:break-all;line-height:1.6;border:1px solid rgba(0,0,0,0.06)}
+  .action-btns{display:flex;flex-direction:column;gap:8px}
+  .aBtn{width:100%;padding:11px 16px;border:none;border-radius:7px;font-size:13px;font-family:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s}
+  .aBtn.dl{background:var(--green);color:white}
+  .aBtn.dl:hover{background:#145a2e}
+  .aBtn.open{background:var(--maroon);color:white}
+  .aBtn.open:hover{background:var(--deep-maroon)}
+  .aBtn.copy{background:var(--deep-cream);color:var(--text-dark);border:1.5px solid var(--gold)}
+  .aBtn.copy:hover{background:#E8D9B8}
+  .qr-hint{background:#F0FDF4;border:1px solid #86EFAC;border-radius:8px;padding:14px;font-size:12px;color:#15803D;line-height:1.7}
+
+  /* PLACEHOLDER */
+  #placeholder{background:var(--white);border-radius:14px;padding:56px 32px;text-align:center;box-shadow:0 6px 28px rgba(0,0,0,0.06)}
+  #placeholder .ico{font-size:48px;margin-bottom:14px}
+  #placeholder h3{font-family:'Rozha One',serif;color:var(--deep-maroon);margin-bottom:10px}
+  #placeholder p{color:var(--text-medium);font-size:13px;line-height:1.7}
+
+  /* TOAST */
+  .toast{position:fixed;bottom:24px;right:24px;background:var(--green);color:white;padding:12px 20px;border-radius:8px;font-size:13px;font-weight:600;box-shadow:0 4px 16px rgba(0,0,0,0.2);transform:translateY(80px);opacity:0;transition:all 0.3s;z-index:9999;max-width:300px}
+  .toast.show{transform:translateY(0);opacity:1}
+  .toast.err{background:var(--red)}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lock-screen">
+  <div class="lock-card">
+    <div class="lock-logo">🔐</div>
+    <h1>Admin Login</h1>
+    <p>श्री बृजवासी पंडा सभा — QR प्रबंधन</p>
+    <input type="password" id="lock-pass" placeholder="पासवर्ड दर्ज करें" onkeydown="if(event.key==='Enter')unlock()">
+    <button id="lock-btn" onclick="unlock()">प्रवेश करें</button>
+    <div id="lock-error"></div>
+    <div style="margin-top:20px;font-size:11px;color:#aaa;line-height:1.6">
+      डिफ़ॉल्ट पासवर्ड: <strong style="color:#888">pandasabha123</strong><br>
+      (SETUP_GUIDE में बदलने का तरीका देखें)
+    </div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <header>
+    <div class="header-left">
+      <div class="hlogo">🪔</div>
+      <div class="htitle">
+        <div class="main">पंडा सभा — QR Admin</div>
+        <div class="sub">तीर्थ पुरोहित प्रबंधन</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="sheet-status" id="sheet-status">● शीट कनेक्ट नहीं</span>
+      <button class="btn-logout" onclick="doLogout()">🔒 लॉगआउट</button>
+    </div>
+  </header>
+
+  <div class="body-wrap">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="stats-row">
+          <div class="stat-chip">
+            <div class="num" id="total-count">0</div>
+            <div class="lbl">कुल पुरोहित</div>
+          </div>
+          <div class="stat-chip">
+            <div class="num" id="filtered-count">0</div>
+            <div class="lbl">दिख रहे हैं</div>
+          </div>
+        </div>
+        <div class="search-add">
+          <input type="text" id="search-box" placeholder="🔍 नाम / नामांकन खोजें..." oninput="filterList()">
+          <button class="btn-refresh" onclick="loadSheet()" title="डेटा रीफ्रेश करें">🔄</button>
+        </div>
+      </div>
+      <div class="purohit-list" id="purohit-list">
+        <div class="empty-msg">ऊपर Google Sheet URL डालें और<br>"शीट लोड करें" दबाएं</div>
+      </div>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+
+      <!-- CONFIG -->
+      <div class="config-box">
+        <h3>⚙️ सेटअप — एक बार करें</h3>
+        <div class="config-grid">
+          <div class="cfg-group full">
+            <div class="cfg-label">Google Sheet CSV URL *</div>
+            <input type="text" id="cfg-sheet-url" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv&gid=0">
+            <div class="cfg-hint">Google Sheet → File → Share → Publish to web → CSV → Copy link<br>
+            (विस्तृत जानकारी SETUP_GUIDE.md में)</div>
+          </div>
+          <div class="cfg-group full">
+            <div class="cfg-label">Purohit Page URL *</div>
+            <input type="text" id="cfg-page-url" placeholder="https://yourusername.github.io/panda-sabha/purohit.html">
+            <div class="cfg-hint">GitHub Pages deploy के बाद यहाँ URL डालें</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+          <button class="btn-load" onclick="saveConfig()">💾 सेटिंग सहेजें</button>
+          <button class="btn-load" style="background:var(--gold)" onclick="loadSheet()">📥 शीट लोड करें</button>
+        </div>
+      </div>
+
+      <!-- QR PANEL -->
+      <div id="qr-panel">
+        <div class="qr-head">
+          <span>🪪</span>
+          <h2 id="qr-panel-title">QR पहचान पत्र</h2>
+        </div>
+        <div class="qr-body-wrap">
+          <!-- ID CARD -->
+          <div class="id-card">
+            <div style="text-align:center">
+              <div class="id-org">श्री बृजवासी पंडा सभा (रजि0)<br>वृंदावन धाम</div>
+              <div><span class="id-tag">तीर्थ पुरोहित पहचान पत्र</span></div>
+            </div>
+            <div id="id-photo-area" class="id-photo-area">🙏</div>
+            <div class="id-name" id="id-name"></div>
+            <div class="id-enroll-tag" id="id-enroll"></div>
+            <div id="id-fields"></div>
+            <div class="id-qr-wrap">
+              <div id="qr-div"></div>
+              <div class="id-scan-lbl">📲 स्कैन करें — विस्तृत जानकारी के लिए</div>
+            </div>
+          </div>
+
+          <!-- ACTIONS -->
+          <div class="qr-actions">
+            <h3>QR लिंक</h3>
+            <div class="url-display" id="qr-url-display">—</div>
+            <div class="action-btns">
+              <button class="aBtn dl" onclick="downloadQR()">⬇️ QR PNG डाउनलोड करें</button>
+              <button class="aBtn open" onclick="openProfile()">🔗 प्रोफाइल पेज खोलें</button>
+              <button class="aBtn copy" onclick="copyURL()">📋 URL कॉपी करें</button>
+            </div>
+            <div class="qr-hint">
+              ✅ <strong>QR तैयार है!</strong><br>
+              QR डाउनलोड करें और पुरोहित जी के पहचान पत्र पर प्रिंट करें।<br>
+              स्कैन करने पर उनकी पूरी जानकारी खुलेगी।
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLACEHOLDER -->
+      <div id="placeholder">
+        <div class="ico">📲</div>
+        <h3>बाईं सूची से पुरोहित चुनें</h3>
+        <p>
+          पहले ऊपर Google Sheet URL और Page URL डालकर<br>
+          <strong>"शीट लोड करें"</strong> दबाएं।<br><br>
+          फिर किसी पुरोहित पर क्लिक करें → QR तैयार!
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  // ─── SIMPLE PASSWORD (change this!) ───────────────────────────
+  const ADMIN_PASSWORD = "pandasabha123";
+  // ─────────────────────────────────────────────────────────────
+
+  let allPurohits = [];
+  let currentQRCode = null;
+  let currentURL = "";
+
+  // ── AUTH ──────────────────────────────────────────────────────
+  function unlock() {
+    const pass = document.getElementById("lock-pass").value;
+    if (pass === ADMIN_PASSWORD) {
+      document.getElementById("lock-screen").style.display = "none";
+      document.getElementById("app").style.display = "flex";
+      loadConfig();
+    } else {
+      document.getElementById("lock-error").textContent = "❌ गलत पासवर्ड";
+      document.getElementById("lock-pass").value = "";
+    }
+  }
+
+  function doLogout() {
+    document.getElementById("app").style.display = "none";
+    document.getElementById("lock-screen").style.display = "flex";
+    document.getElementById("lock-pass").value = "";
+  }
+
+  // ── CONFIG (localStorage) ─────────────────────────────────────
+  function saveConfig() {
+    const sheetUrl = document.getElementById("cfg-sheet-url").value.trim();
+    const pageUrl  = document.getElementById("cfg-page-url").value.trim();
+    if (!sheetUrl || !pageUrl) { toast("❌ दोनों URL जरूरी हैं", true); return; }
+    localStorage.setItem("ps_sheet_url", sheetUrl);
+    localStorage.setItem("ps_page_url", pageUrl);
+    toast("✅ सेटिंग सहेज ली गई!");
+  }
+
+  function loadConfig() {
+    const su = localStorage.getItem("ps_sheet_url") || "";
+    const pu = localStorage.getItem("ps_page_url") || "";
+    document.getElementById("cfg-sheet-url").value = su;
+    document.getElementById("cfg-page-url").value  = pu;
+    if (su) loadSheet();
+  }
+
+  // ── PARSE CSV ─────────────────────────────────────────────────
+  function parseCSV(text) {
+    const lines = text.trim().split("\n");
+    if (lines.length < 2) return [];
+    const headers = lines[0].split(",").map(h => h.trim().replace(/^"|"$/g,"").trim());
+    return lines.slice(1).map(line => {
+      const cols=[]; let cur="", inQ=false;
+      for(let ch of line){
+        if(ch==='"'){inQ=!inQ}
+        else if(ch===',' && !inQ){cols.push(cur);cur=""}
+        else cur+=ch;
+      }
+      cols.push(cur);
+      const obj={};
+      headers.forEach((h,i)=>{ obj[h]=(cols[i]||"").trim().replace(/^"|"$/g,"").trim(); });
+      return obj;
+    });
+  }
+
+  // ── LOAD SHEET ────────────────────────────────────────────────
+  async function loadSheet() {
+    const url = document.getElementById("cfg-sheet-url").value.trim();
+    if (!url) { toast("❌ पहले Sheet URL डालें", true); return; }
+
+    document.getElementById("sheet-status").textContent = "● लोड हो रहा है...";
+    document.getElementById("sheet-status").className = "sheet-status";
+
+    try {
+      const res = await fetch(url + "&t=" + Date.now());
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const text = await res.text();
+      allPurohits = parseCSV(text).filter(r => r.enrollmentNo); // skip blank rows
+
+      document.getElementById("total-count").textContent    = allPurohits.length;
+      document.getElementById("filtered-count").textContent = allPurohits.length;
+      document.getElementById("sheet-status").textContent   = "● शीट कनेक्टेड ✓";
+      document.getElementById("sheet-status").className     = "sheet-status ok";
+
+      renderList("");
+      toast("✅ " + allPurohits.length + " पुरोहित लोड हुए!");
+    } catch(e) {
+      document.getElementById("sheet-status").textContent = "● शीट एरर ✗";
+      document.getElementById("sheet-status").className   = "sheet-status err";
+      toast("❌ शीट लोड नहीं हुई: " + e.message, true);
+    }
+  }
+
+  // ── RENDER LIST ───────────────────────────────────────────────
+  function renderList(filter) {
+    const f = filter.trim().toLowerCase();
+    const shown = allPurohits.filter(p =>
+      !f ||
+      (p.name || "").toLowerCase().includes(f) ||
+      (p.enrollmentNo || "").toLowerCase().includes(f) ||
+      (p.phone || "").includes(f)
+    );
+
+    document.getElementById("filtered-count").textContent = shown.length;
+
+    const list = document.getElementById("purohit-list");
+    if (!shown.length) {
+      list.innerHTML = `<div class="empty-msg">कोई रिकॉर्ड नहीं मिला</div>`;
+      return;
+    }
+
+    list.innerHTML = shown.map((p, i) => `
+      <div class="list-row" data-idx="${i}" onclick="pickPurohit('${escHtml(p.enrollmentNo)}')">
+        <div class="list-avatar">
+          ${p.photoURL && p.photoURL.startsWith("http")
+            ? `<img src="${p.photoURL}" onerror="this.parentElement.innerHTML='🙏'">`
+            : "🙏"}
+        </div>
+        <div class="list-info">
+          <div class="list-name">${p.name}</div>
+          <div class="list-meta">🔢 ${p.enrollmentNo}${p.phone ? " | 📞 " + p.phone : ""}</div>
+        </div>
+        <button class="btn-row-qr" onclick="event.stopPropagation();pickPurohit('${escHtml(p.enrollmentNo)}')">📲 QR</button>
+      </div>
+    `).join("");
+  }
+
+  function filterList() {
+    renderList(document.getElementById("search-box").value);
+  }
+
+  function escHtml(s){ return (s||"").replace(/'/g,"&#39;"); }
+
+  // ── PICK PUROHIT → GENERATE QR ───────────────────────────────
+  function pickPurohit(enrollmentNo) {
+    const p = allPurohits.find(x => x.enrollmentNo === enrollmentNo);
+    if (!p) return;
+
+    // Highlight row
+    document.querySelectorAll(".list-row").forEach(r => r.classList.remove("active"));
+    document.querySelectorAll(`.list-row`).forEach(r => {
+      if (r.getAttribute("onclick")?.includes(enrollmentNo)) r.classList.add("active");
+    });
+
+    const pageUrl = document.getElementById("cfg-page-url").value.trim()
+      || "purohit.html";
+    const sep = pageUrl.includes("?") ? "&" : "?";
+    currentURL = `${pageUrl}${sep}searchID=${p.enrollmentNo}`;
+
+    // Update panel title
+    document.getElementById("qr-panel-title").textContent = `QR — ${p.name} (${p.enrollmentNo})`;
+
+    // Update ID card
+    document.getElementById("id-name").textContent = p.name;
+    document.getElementById("id-enroll").textContent = "नामांकन : " + p.enrollmentNo;
+
+    const photoArea = document.getElementById("id-photo-area");
+    if (p.photoURL && p.photoURL.startsWith("http")) {
+      photoArea.innerHTML = `<img src="${p.photoURL}" onerror="this.parentElement.innerHTML='🙏'">`;
+    } else {
+      photoArea.innerHTML = "🙏";
+    }
+
+    document.getElementById("id-fields").innerHTML = [
+      p.fatherName && `<div class="id-field"><span class="l">पिता :</span><span class="v">${p.fatherName}</span></div>`,
+      p.age        && `<div class="id-field"><span class="l">उम्र :</span><span class="v">${p.age}</span></div>`,
+      p.address    && `<div class="id-field"><span class="l">पता :</span><span class="v">${p.address.substring(0,30)}</span></div>`,
+      p.phone      && `<div class="id-field"><span class="l">फोन :</span><span class="v">${p.phone}</span></div>`,
+    ].filter(Boolean).join("");
+
+    // URL display
+    document.getElementById("qr-url-display").textContent = currentURL;
+
+    // Generate QR
+    const container = document.getElementById("qr-div");
+    container.innerHTML = "";
+    if (currentQRCode) { try { currentQRCode.clear(); } catch(e){} }
+    currentQRCode = new QRCode(container, {
+      text: currentURL,
+      width: 130, height: 130,
+      colorDark: "#4A0E0E",
+      colorLight: "#FFF8EE",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Show panel
+    document.getElementById("qr-panel").style.display = "block";
+    document.getElementById("placeholder").style.display = "none";
+    document.getElementById("qr-panel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  // ── QR ACTIONS ────────────────────────────────────────────────
+  function downloadQR() {
+    setTimeout(() => {
+      const canvas = document.querySelector("#qr-div canvas");
+      if (!canvas) { toast("❌ QR पहले बनाएं", true); return; }
+      const a = document.createElement("a");
+      const id = document.getElementById("id-enroll").textContent.replace("नामांकन : ","").trim();
+      a.download = `QR_${id}.png`;
+      a.href = canvas.toDataURL();
+      a.click();
+    }, 150);
+  }
+
+  function openProfile() {
+    if (currentURL) window.open(currentURL, "_blank");
+  }
+
+  function copyURL() {
+    if (!currentURL) return;
+    navigator.clipboard.writeText(currentURL).then(() => toast("✅ URL कॉपी हो गया!"));
+  }
+
+  // ── TOAST ─────────────────────────────────────────────────────
+  function toast(msg, isErr = false) {
+    const t = document.getElementById("toast");
+    t.textContent = msg;
+    t.className = "toast show" + (isErr ? " err" : "");
+    setTimeout(() => t.classList.remove("show"), 3000);
+  }
+
+  // Enter key on lock screen
+  document.addEventListener("keydown", e => {
+    if (e.key === "Enter" && document.getElementById("lock-screen").style.display !== "none") {
+      unlock();
+    }
+  });
+</script>
+</body>
+</html>

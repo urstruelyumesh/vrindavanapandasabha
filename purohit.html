@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>तीर्थ पुरोहित की जानकारी — श्री बृजवासी पंडा सभा</title>
+<meta name="description" content="बृजवासी पंडा सभा, वृंदावन द्वारा प्रमाणित तीर्थ पुरोहित की जानकारी">
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Rozha+One&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8570A; --deep-saffron: #C44A08;
+    --gold: #D4A017; --bright-gold: #F5C842;
+    --cream: #FFF8EE; --deep-cream: #F5ECD8;
+    --maroon: #6B1414; --deep-maroon: #4A0E0E;
+    --text-dark: #2C1810; --text-medium: #5C3D2E;
+    --white: #FFFFFF; --green-ok: #1A6B3A;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Tiro Devanagari Hindi','Libre Baskerville',serif; background:var(--cream); color:var(--text-dark); min-height:100vh; }
+
+  nav { background:var(--maroon); padding:14px 24px; display:flex; align-items:center; gap:14px; box-shadow:0 3px 12px rgba(0,0,0,0.3); }
+  .nav-logo { width:46px; height:46px; background:var(--bright-gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; flex-shrink:0; }
+  .nav-title .main { font-family:'Rozha One',serif; color:var(--bright-gold); font-size:15px; }
+  .nav-title .sub { color:rgba(255,248,238,0.75); font-size:11px; }
+
+  .page-hero { background:linear-gradient(135deg,var(--deep-maroon),var(--maroon)); padding:32px 24px; text-align:center; position:relative; overflow:hidden; }
+  .page-hero::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg,rgba(245,200,66,0.03) 0,rgba(245,200,66,0.03) 1px,transparent 0,transparent 50%); background-size:20px 20px; }
+  .page-hero h1 { font-family:'Rozha One',serif; color:var(--bright-gold); font-size:clamp(1.4rem,3vw,2rem); position:relative; }
+  .page-hero p { color:rgba(255,248,238,0.75); font-size:13px; margin-top:8px; position:relative; }
+  .breadcrumb { color:rgba(255,248,238,0.5); font-size:12px; margin-top:10px; position:relative; }
+  .breadcrumb a { color:var(--bright-gold); text-decoration:none; }
+
+  main { max-width:780px; margin:36px auto; padding:0 20px 60px; }
+
+  /* LOADING */
+  #loading-state { display:flex; flex-direction:column; align-items:center; gap:16px; padding:56px 32px; background:var(--white); border-radius:14px; box-shadow:0 6px 24px rgba(0,0,0,0.08); text-align:center; }
+  .spinner { width:44px; height:44px; border:4px solid var(--deep-cream); border-top-color:var(--saffron); border-radius:50%; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  #loading-state p { color:var(--text-medium); font-size:14px; }
+
+  /* STATE BOX */
+  .state-box { background:var(--white); border-radius:12px; padding:56px 32px; text-align:center; box-shadow:0 6px 24px rgba(0,0,0,0.08); }
+  .state-icon { font-size:52px; margin-bottom:16px; }
+  .state-box h2 { font-family:'Rozha One',serif; color:var(--deep-maroon); margin-bottom:10px; }
+  .state-box p { color:var(--text-medium); font-size:14px; line-height:1.8; }
+
+  /* PROFILE CARD */
+  .profile-card { background:var(--white); border-radius:16px; box-shadow:0 8px 36px rgba(0,0,0,0.1); overflow:hidden; animation:fadeUp 0.6s ease both; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .card-band { height:6px; background:linear-gradient(90deg,var(--deep-maroon),var(--saffron),var(--gold),var(--saffron),var(--deep-maroon)); }
+
+  .card-header { background:linear-gradient(135deg,var(--deep-maroon),#7A1A1A); padding:28px 32px 0; display:flex; gap:24px; align-items:flex-end; flex-wrap:wrap; }
+  .photo-wrap { position:relative; flex-shrink:0; }
+  .profile-photo { width:120px; height:140px; object-fit:cover; border-radius:10px 10px 0 0; border:3px solid var(--bright-gold); border-bottom:none; display:block; }
+  .photo-placeholder { width:120px; height:140px; background:rgba(245,200,66,0.12); border-radius:10px 10px 0 0; border:3px solid var(--bright-gold); border-bottom:none; display:flex; align-items:center; justify-content:center; font-size:52px; }
+  .verified-badge { position:absolute; bottom:8px; right:-12px; background:var(--green-ok); color:white; font-size:10px; font-weight:700; padding:3px 8px; border-radius:10px; border:2px solid white; white-space:nowrap; }
+
+  .header-info { padding-bottom:24px; flex:1; min-width:200px; }
+  .enrollment-tag { display:inline-block; background:rgba(245,200,66,0.15); border:1px solid rgba(245,200,66,0.35); color:var(--bright-gold); font-size:11px; padding:4px 12px; border-radius:20px; margin-bottom:10px; letter-spacing:0.5px; }
+  .header-info h2 { font-family:'Rozha One',serif; color:var(--bright-gold); font-size:clamp(1.4rem,3vw,1.9rem); line-height:1.3; margin-bottom:6px; }
+  .form-no { color:rgba(255,248,238,0.55); font-size:12px; }
+
+  .card-body { padding:28px 32px; }
+
+  .details-grid { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--deep-cream); border-radius:10px; overflow:hidden; }
+  @media(max-width:540px) { .details-grid{grid-template-columns:1fr} .card-header{padding:24px 20px 0;gap:16px} .card-body{padding:20px} }
+  .detail-item { padding:15px 18px; border-bottom:1px solid var(--deep-cream); border-right:1px solid var(--deep-cream); }
+  .detail-item:nth-child(even) { border-right:none; }
+  .detail-item:nth-last-child(-n+2) { border-bottom:none; }
+  .detail-item.full-width { grid-column:1/-1; border-right:none; }
+  .detail-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--saffron); margin-bottom:5px; }
+  .detail-value { font-size:15px; color:var(--text-dark); font-weight:600; line-height:1.4; }
+  .detail-value.na { color:var(--text-medium); font-weight:400; font-style:italic; font-size:13px; }
+  .detail-value a { color:var(--saffron); text-decoration:none; font-weight:700; }
+
+  .certificate { margin-top:22px; background:linear-gradient(135deg,#FFFBF2,#FFF5E0); border:1px solid rgba(212,160,23,0.3); border-left:5px solid var(--gold); border-radius:0 8px 8px 0; padding:16px 20px; font-size:13px; color:var(--text-medium); line-height:1.8; }
+  .om-divider { text-align:center; color:var(--gold); font-size:20px; margin:24px 0 18px; opacity:0.65; }
+
+  .signatories { display:flex; gap:20px; flex-wrap:wrap; }
+  .signatory { display:flex; align-items:center; gap:12px; background:var(--deep-cream); border-radius:10px; padding:12px 16px; flex:1; min-width:160px; }
+  .sig-avatar { width:48px; height:48px; background:linear-gradient(135deg,var(--maroon),var(--deep-maroon)); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--bright-gold); font-weight:700; font-family:'Rozha One',serif; border:2px solid var(--gold); flex-shrink:0; }
+  .sig-info h4 { font-size:13px; color:var(--deep-maroon); font-weight:700; }
+  .sig-info p { font-size:11px; color:var(--saffron); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+
+  .stamp-row { display:flex; justify-content:flex-end; margin-top:20px; }
+  .stamp { border:3px double var(--maroon); border-radius:50%; width:88px; height:88px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:8px; color:var(--maroon); font-weight:700; letter-spacing:0.5px; line-height:1.6; opacity:0.45; }
+
+  footer { background:var(--deep-maroon); color:rgba(255,248,238,0.65); text-align:center; padding:22px; font-size:12px; }
+  footer span { color:var(--bright-gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">🪔</div>
+  <div class="nav-title">
+    <div class="main">श्री बृजवासी पंडा सभा (रजि0)</div>
+    <div class="sub">वृंदावन धाम</div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>तीर्थ पुरोहित की जानकारी</h1>
+  <p>बृजवासी पंडा सभा, वृंदावन द्वारा प्रमाणित एवं सत्यापित जानकारी</p>
+  <div class="breadcrumb"><a href="index.html">मुख्य पृष्ठ</a> › तीर्थ पुरोहित सदस्यता</div>
+</div>
+
+<main>
+  <div id="loading-state">
+    <div class="spinner"></div>
+    <p>जानकारी लोड हो रही है...</p>
+  </div>
+  <div id="main-content"></div>
+</main>
+
+<footer>© <span>श्री बृजवासी पंडा सभा (रजि0)</span>, वृंदावन | जय श्री राधे 🙏</footer>
+
+<script>
+  // ================================================================
+  //  🔧 ONLY THING YOU NEED TO CHANGE:
+  //  Replace with your Google Sheet's published CSV URL
+  //  (Instructions in SETUP_GUIDE.md — Step 3)
+  // ================================================================
+  const SHEET_CSV_URL = "YOUR_GOOGLE_SHEET_CSV_URL_HERE";
+
+  // ================================================================
+  //  Parse CSV text into array of objects using first row as headers
+  // ================================================================
+  function parseCSV(text) {
+    const lines = text.trim().split("\n");
+    if (lines.length < 2) return [];
+    const headers = lines[0].split(",").map(h => h.trim().replace(/^"|"$/g, "").trim());
+    return lines.slice(1).map(line => {
+      // Handle quoted commas
+      const cols = [];
+      let cur = "", inQ = false;
+      for (let ch of line) {
+        if (ch === '"') { inQ = !inQ; }
+        else if (ch === ',' && !inQ) { cols.push(cur); cur = ""; }
+        else cur += ch;
+      }
+      cols.push(cur);
+      const obj = {};
+      headers.forEach((h, i) => { obj[h] = (cols[i] || "").trim().replace(/^"|"$/g, "").trim(); });
+      return obj;
+    });
+  }
+
+  async function loadPurohit() {
+    const params = new URLSearchParams(window.location.search);
+    const searchID = params.get("searchID") || params.get("id");
+
+    if (!searchID) { renderState("no-id"); return; }
+
+    try {
+      // Fetch sheet as CSV (cache-busted)
+      const res = await fetch(SHEET_CSV_URL + "&t=" + Date.now());
+      if (!res.ok) throw new Error("Sheet fetch failed");
+      const text = await res.text();
+      const rows = parseCSV(text);
+
+      // Find matching row — column name must be "enrollmentNo"
+      const match = rows.find(r => r.enrollmentNo === searchID || r.enrollmentNo?.trim() === searchID.trim());
+
+      if (!match) { renderState("not-found", searchID); return; }
+      renderCard(match);
+    } catch(err) {
+      console.error(err);
+      renderState("error");
+    }
+  }
+
+  function renderCard(d) {
+    document.getElementById("loading-state").style.display = "none";
+
+    const photoHTML = d.photoURL && d.photoURL.startsWith("http")
+      ? `<img src="${d.photoURL}" alt="${d.name}" class="profile-photo" onerror="this.style.display='none';document.getElementById('ph').style.display='flex'">
+         <div id="ph" class="photo-placeholder" style="display:none">🙏</div>`
+      : `<div class="photo-placeholder">🙏</div>`;
+
+    const gotraVal = d.gotra && d.gotra.toLowerCase() !== "na" && d.gotra !== ""
+      ? `<div class="detail-value">${d.gotra}</div>`
+      : `<div class="detail-value na">सूचना उपलब्ध नही है</div>`;
+
+    document.getElementById("main-content").innerHTML = `
+      <div class="profile-card">
+        <div class="card-band"></div>
+        <div class="card-header">
+          <div class="photo-wrap">
+            ${photoHTML}
+            <div class="verified-badge">✓ सत्यापित</div>
+          </div>
+          <div class="header-info">
+            <div class="enrollment-tag">नामांकन संख्या : ${d.enrollmentNo}</div>
+            <h2>${d.name}</h2>
+            <div class="form-no">फार्म संख्या : ${d.formNo || "—"}</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="details-grid">
+            <div class="detail-item">
+              <div class="detail-label">पुरोहित जी का नाम</div>
+              <div class="detail-value">${d.name}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">पिताजी का नाम</div>
+              <div class="detail-value">${d.fatherName || "—"}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">उम्र</div>
+              <div class="detail-value">${d.age || "—"}</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">पुरोहित जी का गोत्र</div>
+              ${gotraVal}
+            </div>
+            <div class="detail-item full-width">
+              <div class="detail-label">पुरोहित जी का निवास स्थल</div>
+              <div class="detail-value">${d.address || "—"}</div>
+            </div>
+            <div class="detail-item full-width">
+              <div class="detail-label">पुरोहित जी की देहरी</div>
+              <div class="detail-value">${d.dehri || "—"}</div>
+            </div>
+            <div class="detail-item full-width">
+              <div class="detail-label">पुरोहित जी का संपर्क सूत्र</div>
+              <div class="detail-value">
+                <a href="tel:${d.phone}">📞 ${d.phone || "—"}</a>
+              </div>
+            </div>
+          </div>
+          <div class="certificate">
+            प्रमाणित किया जाता है कि उक्त व्यक्ति ब्रज वृंदावन के मूल बृजवासी तीर्थ पुरोहित एवं ब्रज की प्राचीनतम सभा श्री बृजवासी पंडा सभा के सम्मानित सदस्य हैं। तीर्थ में दर्शन पूजा अर्चना दान पुण्य इत्यादि कर्म कराने का धार्मिक अधिकार तीर्थ पुरोहित का है अतः तीर्थ पुरोहित का सम्मान करें। पूजा अर्चना दान आदि स्वेच्छा से करें।
+          </div>
+          <div class="om-divider">॥ जय श्री राधे ॥</div>
+          <div class="signatories">
+            <div class="signatory">
+              <div class="sig-avatar">रा</div>
+              <div class="sig-info"><h4>राघव भारद्वाज</h4><p>महासचिव</p></div>
+            </div>
+            <div class="signatory">
+              <div class="sig-avatar">श्या</div>
+              <div class="sig-info"><h4>श्याम सुंदर गौतम</h4><p>अध्यक्ष</p></div>
+            </div>
+          </div>
+          <div class="stamp-row">
+            <div class="stamp">श्री बृजवासी<br>पंडा सभा<br>वृंदावन<br>🪔</div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function renderState(type, id) {
+    document.getElementById("loading-state").style.display = "none";
+    const msgs = {
+      "no-id":      { icon:"🔍", title:"कोई ID नहीं मिली",        body:"URL में searchID नहीं है। कृपया सही QR कोड स्कैन करें।" },
+      "not-found":  { icon:"❌", title:"जानकारी उपलब्ध नहीं",    body:`नामांकन संख्या <strong>${id}</strong> के लिए कोई रिकॉर्ड नहीं मिला।<br>सही QR कोड स्कैन करें या संस्था से संपर्क करें।<br><br>📞 +91 98979 44277` },
+      "error":      { icon:"⚠️", title:"कनेक्शन त्रुटि",          body:"डेटा लोड नहीं हो सका। इंटरनेट जांचें और पुनः प्रयास करें।" }
+    };
+    const m = msgs[type] || msgs["error"];
+    document.getElementById("main-content").innerHTML = `
+      <div class="state-box">
+        <div class="state-icon">${m.icon}</div>
+        <h2>${m.title}</h2>
+        <p>${m.body}</p>
+      </div>`;
+  }
+
+  window.addEventListener("DOMContentLoaded", loadPurohit);
+</script>
+</body>
+</html>
