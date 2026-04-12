@@ -1,989 +1,434 @@
-<!DOCTYPE html>
-<html lang="hi">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>तीर्थ पुरोहित की जानकारी — श्री बृजवासी पंडा सभा</title>
-  <meta name="description" content="बृजवासी पंडा सभा, वृंदावन द्वारा प्रमाणित तीर्थ पुरोहित की जानकारी">
-
-  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&family=Rozha+One&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" type="image/x-icon" href="img/icons/logo-sm.png" />
-
-  <link rel="stylesheet" href="css/font-awesome.min.css" />
-  <link rel="stylesheet" href="css/themify-icons.css" />
-  <link rel="stylesheet" href="css/elegant-font-icons.css" />
-  <link rel="stylesheet" href="css/elegant-line-icons.css" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/venobox/venobox.css" />
-  <link rel="stylesheet" href="css/owl.carousel.css" />
-  <link rel="stylesheet" href="css/slicknav.min.css" />
-  <link rel="stylesheet" href="css/css-animation.min.css" />
-  <link rel="stylesheet" href="css/nivo-slider.css" />
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-
-  <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-
-  <style>
-    :root {
-      --saffron: #ff9022;
-      --deep-saffron: #c44a08;
-      --gold: #d4a017;
-      --bright-gold: #f5c842;
-      --cream: #fff8ee;
-      --deep-cream: #f5ecd8;
-      --maroon: #6e1111;
-      --deep-maroon: #4f0b0b;
-      --text-dark: #2c1810;
-      --text-medium: #5c3d2e;
-      --white: #ffffff;
-      --green-ok: #1a6b3a;
-      --line: #eadcc7;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Tiro Devanagari Hindi', 'Libre Baskerville', serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      min-height: 100vh;
-    }
-
-    a { color: inherit; }
-
-    .site-preloader-wrap {
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 248, 238, 0.9);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-
-    .spinner {
-      width: 42px;
-      height: 42px;
-      border: 4px solid var(--deep-cream);
-      border-top-color: var(--saffron);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .container {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .top-header {
-      background: var(--deep-maroon);
-      color: #fff7e8;
-      font-size: 14px;
-    }
-
-    .top-content-wrap {
-      min-height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 0 0;
-    }
-
-    .left-info, .right-info, .nav-menu, .footer-social, .widget-link, .address {
-      list-style: none;
-    }
-
-    .left-info a {
-      text-decoration: none;
-      font-weight: 700;
-      color: #fff3d3;
-    }
-
-    .right-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #ffd88e;
-      font-size: 13px;
-    }
-
-    .right-info li {
-      width: 28px;
-      height: 28px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .bottom-header {
-      background: linear-gradient(180deg, #fff9ef 0%, #fff4df 100%);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-
-    .bottom-content-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 14px 0;
-      flex-wrap: wrap;
-    }
-
-    .site-branding {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 260px;
-    }
-
-    .logo-mark {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 30% 30%, #ffe59c, var(--gold));
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.6), 0 4px 12px rgba(0,0,0,0.12);
-      font-size: 26px;
-    }
-
-    .branding-text h1 {
-      font-family: 'Rozha One', serif;
-      font-size: 18px;
-      color: var(--deep-maroon);
-      line-height: 1.25;
-    }
-
-    .branding-text p {
-      font-size: 12px;
-      color: var(--text-medium);
-      margin-top: 2px;
-    }
-
-    .menu-wrap {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      flex: 1;
-    }
-
-    .nav-menu {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-dark);
-    }
-
-    .nav-menu a {
-      text-decoration: none;
-      transition: color .2s ease;
-    }
-
-    .nav-menu a:hover { color: var(--saffron); }
-
-    .default-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      background: linear-gradient(135deg, var(--deep-saffron), var(--saffron));
-      color: white;
-      padding: 11px 18px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      box-shadow: 0 8px 18px rgba(196, 74, 8, 0.18);
-      white-space: nowrap;
-    }
-
-    .pager-header {
-      background: linear-gradient(135deg, rgba(79,11,11,0.95), rgba(110,17,17,0.94));
-      position: relative;
-      overflow: hidden;
-      padding: 42px 0;
-    }
-
-    .pager-header::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(45deg, rgba(245,200,66,0.05) 0, rgba(245,200,66,0.05) 1px, transparent 1px, transparent 18px);
-    }
-
-    .page-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    .page-content h2 {
-      font-family: 'Rozha One', serif;
-      color: var(--bright-gold);
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
-      margin-bottom: 8px;
-    }
-
-    .page-content p {
-      color: rgba(255,248,238,0.84);
-      font-size: 14px;
-      max-width: 760px;
-      margin: 0 auto 12px;
-      line-height: 1.8;
-    }
-
-    .breadcrumb {
-      display: inline-flex;
-      gap: 6px;
-      flex-wrap: wrap;
-      justify-content: center;
-      color: rgba(255,248,238,0.65);
-      font-size: 12px;
-    }
-
-    .breadcrumb a {
-      text-decoration: none;
-      color: var(--bright-gold);
-    }
-
-    .contact-section {
-      padding: 42px 0 56px;
-    }
-
-    #google_map { display: none; }
-
-    #loading-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      padding: 54px 28px;
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: 0 10px 36px rgba(0,0,0,0.08);
-      text-align: center;
-      max-width: 820px;
-      margin: 0 auto;
-    }
-
-    #loading-state p { color: var(--text-medium); font-size: 15px; }
-
-    .state-box {
-      max-width: 820px;
-      margin: 0 auto;
-      background: var(--white);
-      border-radius: 16px;
-      padding: 54px 32px;
-      text-align: center;
-      box-shadow: 0 10px 36px rgba(0,0,0,0.08);
-    }
-
-    .state-icon { font-size: 54px; margin-bottom: 12px; }
-    .state-box h2 {
-      font-family: 'Rozha One', serif;
-      color: var(--deep-maroon);
-      margin-bottom: 10px;
-    }
-    .state-box p {
-      color: var(--text-medium);
-      font-size: 15px;
-      line-height: 1.9;
-    }
-
-    .profile-shell {
-      background: var(--white);
-      border-radius: 18px;
-      box-shadow: 0 14px 44px rgba(0,0,0,0.1);
-      overflow: hidden;
-      max-width: 980px;
-      margin: 0 auto;
-      animation: fadeUp .6s ease both;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-title {
-      text-align: center;
-      padding: 30px 22px 12px;
-    }
-
-    .section-title h2 {
-      font-family: 'Rozha One', serif;
-      color: var(--deep-maroon);
-      font-size: clamp(1.45rem, 2.8vw, 2rem);
-    }
-
-    .profile-content {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 28px;
-      padding: 16px 28px 10px;
-      align-items: start;
-    }
-
-    .profile-image-box {
-      position: relative;
-    }
-
-    .profile-image,
-    .profile-image-placeholder {
-      width: 100%;
-      aspect-ratio: 5 / 6.2;
-      object-fit: cover;
-      border-radius: 14px;
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      background: linear-gradient(135deg, #fff6e4, #ffe2bd);
-    }
-
-    .profile-image-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 56px;
-    }
-
-    .verified-badge {
-      position: absolute;
-      right: 10px;
-      bottom: 10px;
-      background: var(--green-ok);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 2px solid #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.14);
-    }
-
-    .contact-info {
-      display: grid;
-      grid-template-columns: 230px 1fr;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .contact-info:first-child {
-      border-top: 1px solid var(--line);
-    }
-
-    .contact-info h3 {
-      color: var(--saffron);
-      font-size: 17px;
-      padding: 14px 14px 14px 0;
-      line-height: 1.6;
-      font-weight: 700;
-    }
-
-    .contact-info .value {
-      padding: 14px 0;
-      font-size: 17px;
-      color: var(--text-dark);
-      line-height: 1.7;
-      word-break: break-word;
-    }
-
-    .contact-info .value.na {
-      color: var(--text-medium);
-      font-style: italic;
-    }
-
-    .contact-info .value a {
-      color: var(--text-dark);
-      text-decoration: none;
-    }
-
-    .meta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 12px;
-    }
-
-    .meta-card {
-      background: linear-gradient(135deg, #fffaf1, #fff3df);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px 16px;
-    }
-
-    .meta-card .k {
-      color: var(--saffron);
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .meta-card .v {
-      color: var(--text-dark);
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .certificate {
-      margin: 18px 28px 10px;
-      background: linear-gradient(135deg, #fffbf2, #fff5e0);
-      border: 1px solid rgba(212,160,23,0.28);
-      border-left: 5px solid var(--gold);
-      border-radius: 0 12px 12px 0;
-      padding: 18px 20px;
-      color: var(--text-medium);
-      font-size: 15px;
-      line-height: 1.95;
-    }
-
-    .sign-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      padding: 18px 28px 30px;
-      align-items: end;
-    }
-
-    .signature-box {
-      min-height: 128px;
-    }
-
-    .signature-img {
-      min-height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin-bottom: 8px;
-      color: var(--saffron);
-      font-size: 40px;
-      opacity: 0.8;
-    }
-
-    .signature-box.right .signature-img {
-      justify-content: flex-end;
-    }
-
-    .signature-box h4 {
-      font-size: 22px;
-      color: var(--deep-maroon);
-      margin-bottom: 4px;
-    }
-
-    .signature-box h5 {
-      color: var(--text-medium);
-      font-size: 15px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-
-    .signature-box.right {
-      text-align: right;
-    }
-
-    .widget-section {
-      background: linear-gradient(180deg, #fff5e1 0%, #ffeed0 100%);
-      border-top: 1px solid #f0ddb9;
-      padding: 42px 0;
-    }
-
-    .widget-wrap {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 28px;
-    }
-
-    .widget-content {
-      color: var(--text-medium);
-      line-height: 1.9;
-      font-size: 14px;
-    }
-
-    .widget-content h3 {
-      font-family: 'Rozha One', serif;
-      color: var(--deep-maroon);
-      margin-bottom: 12px;
-      font-size: 22px;
-    }
-
-    .widget-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .widget-logo-mark {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 30% 30%, #ffe59c, var(--gold));
-      font-size: 24px;
-    }
-
-    .social-icon,
-    .footer-social {
-      list-style: none;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .social-icon li,
-    .footer-social li {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(79, 11, 11, 0.08);
-      border: 1px solid rgba(79,11,11,0.1);
-      color: var(--deep-maroon);
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .widget-link li,
-    .address li {
-      padding: 6px 0;
-      border-bottom: 1px dashed rgba(92,61,46,0.2);
-    }
-
-    .widget-link li:last-child,
-    .address li:last-child { border-bottom: none; }
-
-    .footer-section {
-      background: var(--deep-maroon);
-      color: rgba(255,248,238,0.72);
-      padding: 18px 0;
-      font-size: 13px;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .copyright a,
-    .footer-social-text a {
-      color: var(--bright-gold);
-      text-decoration: none;
-    }
-
-    .footer-social-text {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    #scroll-to-top {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--deep-saffron), var(--saffron));
-      color: white;
-      text-decoration: none;
-      box-shadow: 0 10px 24px rgba(196,74,8,0.24);
-      font-size: 20px;
-    }
-
-    @media (max-width: 960px) {
-      .widget-wrap { grid-template-columns: 1fr; }
-      .profile-content { grid-template-columns: 1fr; }
-      .profile-image-box { max-width: 280px; }
-      .contact-info { grid-template-columns: 1fr; }
-      .contact-info h3 { padding-bottom: 4px; }
-      .contact-info .value { padding-top: 0; }
-    }
-
-    @media (max-width: 760px) {
-      .top-content-wrap,
-      .bottom-content-wrap,
-      .footer-row {
-        justify-content: center;
-        text-align: center;
-      }
-
-      .site-branding,
-      .menu-wrap {
-        justify-content: center;
-      }
-
-      .nav-menu {
-        justify-content: center;
-      }
-
-      .meta-row,
-      .sign-row {
-        grid-template-columns: 1fr;
-      }
-
-      .signature-box.right { text-align: left; }
-      .signature-box.right .signature-img { justify-content: flex-start; }
-      .certificate { margin-inline: 18px; }
-      .profile-content { padding: 16px 18px 8px; }
-      .sign-row { padding: 18px; }
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="श्री बृजवासी पंडा सभा, वृंदावन" />
+    <meta name="author" content="श्री बृजवासी पंडा सभा, वृंदावन" />
+    <title>तीर्थ पुरोहित की जानकारी — श्री बृजवासी पंडा सभा, वृंदावन</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/icons/logo-sm.png" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/themify-icons.css" />
+    <link rel="stylesheet" href="css/elegant-font-icons.css" />
+    <link rel="stylesheet" href="css/elegant-line-icons.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/venobox/venobox.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/slicknav.min.css" />
+    <link rel="stylesheet" href="css/css-animation.min.css" />
+    <link rel="stylesheet" href="css/nivo-slider.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <style>
+        .contact-info h3 { color: #ff6a00 !important; }
+        #loading-wrap { text-align: center; padding: 60px 20px; }
+        #loading-wrap .spinner-border { width: 3rem; height: 3rem; color: #ff6a00; }
+        #loading-wrap p { margin-top: 16px; color: #666; font-size: 15px; }
+        #error-wrap { text-align: center; padding: 60px 20px; }
+        #error-wrap .error-icon { font-size: 52px; color: #dc3545; margin-bottom: 16px; }
+        #error-wrap h3 { color: #6B1414; }
+        #error-wrap p { color: #666; font-size: 14px; line-height: 1.8; }
+        #purohit-photo { width: 100%; }
+    </style>
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 <body>
-  <div class="site-preloader-wrap" id="site-preloader-wrap">
-    <div class="spinner"></div>
-  </div>
 
-  <header id="header" class="header-section">
-    <div class="top-header">
-      <div class="container">
-        <div class="top-content-wrap">
-          <ul class="left-info">
-            <li><a href="#"><marquee>श्री बृजवासी पंडा सभा, वृंदावन में आपका स्वागत है |</marquee></a></li>
-          </ul>
-          <ul class="right-info" aria-label="social media">
-            <li>f</li>
-            <li>x</li>
-            <li>ig</li>
-            <li>in</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="bottom-header">
-      <div class="container">
-        <div class="bottom-content-wrap">
-          <div class="site-branding">
-            <a href="index.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;">
-              <img src="img/icons/logo.png" alt="Brand" style="width:58px;height:58px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-              <div class="logo-mark" style="display:none;">🪔</div>
-              <div class="branding-text">
-                <h1>श्री बृजवासी पंडा सभा, वृंदावन</h1>
-                <p>प्रमाणित एवं सत्यापित तीर्थ पुरोहित विवरण</p>
-              </div>
-            </a>
-          </div>
-
-          <div class="menu-wrap">
-            <ul class="nav-menu">
-              <li><a href="https://www.vrindavanpandasabha.com/default.aspx">मुख्य पृष्ठ</a></li>
-              <li><a href="https://www.vrindavanpandasabha.com/aboutus.aspx">पंडा सभा</a></li>
-              <li><a href="#">गतिविधियाँ</a></li>
-              <li><a href="https://www.vrindavanpandasabha.com/dharohars.aspx">धरोहर और तीर्थ</a></li>
-              <li><a href="https://www.vrindavanpandasabha.com/temples.aspx">हमारे आराध्य</a></li>
-              <li><a href="https://www.vrindavanpandasabha.com/DaanSevaPrakalp.aspx">दान सेवा प्रकल्प</a></li>
-            </ul>
-            <a href="https://www.vrindavanpandasabha.com/membership.aspx" class="default-btn">तीर्थ पुरोहित सदस्यता</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <div class="pager-header">
-    <div class="container">
-      <div class="page-content">
-        <h2>तीर्थ पुरोहित की जानकारी</h2>
-        <p>तीर्थ पुरोहित की बृजवासी पंडा सभा, वृंदावन द्वारा प्रमाणित एवं सत्यापित जानकारी!</p>
-        <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <span>तीर्थ पुरोहित सदस्यता</span></div>
-      </div>
-    </div>
-  </div>
-
-  <section class="contact-section">
-    <div id="google_map"></div>
-    <div class="container">
-      <div id="loading-state">
+    <div class="site-preloader-wrap">
         <div class="spinner"></div>
-        <p>जानकारी लोड हो रही है...</p>
-      </div>
-      <div id="main-content"></div>
     </div>
-  </section>
 
-  <section class="widget-section">
-    <div class="container">
-      <div class="widget-wrap">
-        <div class="widget-content">
-          <div class="widget-logo">
-            <img src="img/icons/logo.png" alt="logo" style="width:54px;height:54px;object-fit:contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="widget-logo-mark" style="display:none;">🪔</div>
-            <div>
-              <h3 style="margin-bottom: 4px;">श्री बृजवासी पंडा सभा</h3>
-              <div>वृंदावन धाम</div>
+    <!-- HEADER -->
+    <header id="header" class="header-section">
+        <div class="top-header">
+            <div class="container">
+                <div class="top-content-wrap row">
+                    <div class="col-sm-8">
+                        <ul class="left-info">
+                            <li style="width:100%;">
+                                <a href="#" style="width:100%; font-weight:bold;">
+                                    <marquee>श्री बृजवासी पंडा सभा, वृंदावन मे आपका स्वागत है|</marquee>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 d-none d-md-block">
+                        <ul class="right-info">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
-          <p>वृंदावन के तीर्थ पुरोहितों की समस्त जानकारी के साथ वृंदावन के पुरातन महत्व का वर्णन करने वाली एक मात्र विषय वस्तु।</p>
-          <ul class="social-icon" style="margin-top: 14px;">
-            <li>f</li>
-            <li>x</li>
-            <li>ig</li>
-            <li>in</li>
-          </ul>
         </div>
+        <div class="bottom-header">
+            <div class="container">
+                <div class="bottom-content-wrap row">
+                    <div class="col-sm-4">
+                        <div class="site-branding">
+                            <a href="index.html"><img src="img/icons/logo.png" alt="Brand"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 text-right">
+                        <ul id="mainmenu" class="nav navbar-nav nav-menu">
+                            <li><a href="index.html">मुख्य पृष्ठ</a></li>
+                            <li><a href="#">पंडा सभा</a></li>
+                            <li><a href="#">गतिविधियाँ</a></li>
+                            <li><a href="#">धरोहर और तीर्थ</a></li>
+                            <li><a href="#">हमारे आराध्य</a>
+                                <ul>
+                                    <li><a href="#">श्री राधा गोविंद देव जी</a></li>
+                                    <li><a href="#">श्री बाँके बिहारी लाल</a></li>
+                                    <li><a href="#">श्री राधा वल्लभ लाल</a></li>
+                                    <li><a href="#">श्री राधा रमण लाल जु</a></li>
+                                    <li><a href="#">श्री गोकुलानंद जी</a></li>
+                                    <li><a href="#">श्री गोपीनाथ जी</a></li>
+                                    <li><a href="#">श्री यमुना महारानी</a></li>
+                                    <li><a href="#">श्री रंगनाथ जी</a></li>
+                                    <li><a href="#">श्री गोपेश्वर महादेव</a></li>
+                                    <li><a href="#">श्री शाह जी</a></li>
+                                    <li><a href="#">श्री राधा श्यामसुंदर जी</a></li>
+                                    <li><a href="#">श्री राधा दामोदर जी</a></li>
+                                    <li><a href="#">श्री मदन मोहन जी</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">दान सेवा प्रकल्प</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                        <a href="#" class="default-btn" style="font-weight:bolder;">तीर्थ पुरोहित सदस्यता</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-        <div class="widget-content" style="text-align:center;">
-          <h3>मुख्य प्रकल्प</h3>
-          <ul class="widget-link">
-            <li><a href="#" style="text-decoration:none;">माँ यमुना आरती प्रकल्प</a></li>
-            <li><a href="#" style="text-decoration:none;">तीर्थ पुरोहित सेवा प्रकल्प</a></li>
-            <li><a href="#" style="text-decoration:none;">गौ सेवा प्रकल्प</a></li>
-            <li><a href="#" style="text-decoration:none;">मोर-पक्षी सेवा प्रकल्प</a></li>
-            <li><a href="#" style="text-decoration:none;">बंदर सेवा प्रकल्प</a></li>
-          </ul>
-        </div>
+    <div class="header-height"></div>
 
-        <div class="widget-content">
-          <h3>संपर्क करें</h3>
-          <ul class="address">
-            <li>✉ brijwasipandasabha@gmail.com</li>
-            <li>📞 +91 98979 44277</li>
-            <li>📍 गौतम निवास, गौतम पाड़ा, महिला अस्पताल के सामने, वृंदावन</li>
-          </ul>
+    <!-- PAGE HEADER -->
+    <div class="pager-header">
+        <div class="container">
+            <div class="page-content">
+                <h2>तीर्थ पुरोहित की जानकारी</h2>
+                <p>तीर्थ पुरोहित की बृजवासी पंडा सभा, वृंदावन द्वारा प्रमाणित एवं सत्यापित जानकारी!</p>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">तीर्थ पुरोहित सदस्यता</li>
+                </ol>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <footer class="footer-section">
-    <div class="container">
-      <div class="footer-row">
-        <div class="copyright">© श्री बृजवासी पंडा सभा, वृंदावन | Powered by <a href="#">Dinamico Softech</a></div>
-        <div class="footer-social-text">
-          <a href="#">Orders</a>
-          <a href="#">Terms</a>
-          <a href="#">Report Problem</a>
+    <!-- MAIN CONTENT -->
+    <section class="contact-section padding">
+        <div class="container">
+            <div class="row contact-wrap">
+                <div class="col-md-12 text-center pb-5">
+                    <h2>तीर्थ पुरोहित</h2>
+                </div>
+
+                <!-- LOADING STATE -->
+                <div class="col-md-12" id="loading-wrap">
+                    <div class="spinner-border" role="status"></div>
+                    <p>जानकारी लोड हो रही है...</p>
+                </div>
+
+                <!-- ERROR STATE -->
+                <div class="col-md-12" id="error-wrap" style="display:none;">
+                    <div class="error-icon">✗</div>
+                    <h3 id="error-title">जानकारी उपलब्ध नहीं</h3>
+                    <p id="error-msg">कृपया सही QR कोड स्कैन करें या संस्था से संपर्क करें।<br>
+                    <i class="ti-mobile"></i> +91 98979 44277</p>
+                </div>
+
+                <!-- PUROHIT DATA (hidden until loaded) -->
+                <div id="purohit-wrap" style="display:none; width:100%;">
+                    <div class="row">
+                        <!-- PHOTO -->
+                        <div class="col-md-3">
+                            <img id="purohit-photo" src="" alt="पुरोहित फोटो" />
+                        </div>
+
+                        <!-- DETAILS -->
+                        <div class="col-md-9">
+                            <div class="contact-info row">
+                                <div class="col-md-6">
+                                    <h3>नामांकन संख्या : <span style="font-weight:normal; color:black;" id="lbl-enrollment"></span></h3>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>फार्म संख्या : <span style="font-weight:normal; color:black;" id="lbl-form"></span></h3>
+                                </div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>पुरोहित जी का नाम :</h3></div>
+                                <div class="col-md-8"><span id="lbl-name"></span></div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>पिताजी का नाम :</h3></div>
+                                <div class="col-md-8"><span id="lbl-father"></span></div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>उम्र :</h3></div>
+                                <div class="col-md-8"><span id="lbl-age"></span></div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>पुरोहित जी का गोत्र :</h3></div>
+                                <div class="col-md-8"><span id="lbl-gotra"></span></div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>पुरोहित जी का निवास स्थल :</h3></div>
+                                <div class="col-md-8"><span id="lbl-address"></span></div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>पुरोहित जी की देहरी :</h3></div>
+                                <div class="col-md-8"><span id="lbl-dehri"></span></div>
+                            </div>
+                            <div class="contact-info row">
+                                <div class="col-md-4"><h3>पुरोहित जी का संपर्क सूत्र :</h3></div>
+                                <div class="col-md-8"><span id="lbl-phone"></span></div>
+                            </div>
+                        </div>
+
+                        <!-- CERTIFICATE TEXT -->
+                        <div class="col-md-12">
+                            <p><br />प्रमाणित किया जाता है कि उक्त व्यक्ति ब्रज वृंदावन के मूल बृजवासी तीर्थ पुरोहित एवं ब्रज की प्राचीनतम सभा श्री बृजवासी पंडा सभा के सम्मानित सदस्य हैं। तीर्थ में दर्शन पूजा अर्चना दान पुण्य इत्यादि कर्म कराने का धार्मिक अधिकार तीर्थ पुरोहित का है अतः तीर्थ पुरोहित का सम्मान करें। पूजा अर्चना दान आदि स्वेच्छा से करें।</p>
+                        </div>
+
+                        <!-- SIGNATORIES -->
+                        <div class="col-md-6">
+                            <img src="rb.png" style="width:200px;" alt="राघव भारद्वाज" />
+                            <br />
+                            <h4>राघव भारद्वाज</h4>
+                            <h5>General Secretary</h5>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <img src="ssg.png" style="width:200px;" alt="श्याम सुंदर गौतम" />
+                            <br />
+                            <h4>श्याम सुंदर गौतम</h4>
+                            <h5>President</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- /PUROHIT DATA -->
+
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <a href="#header" id="scroll-to-top">↑</a>
+    <!-- FOOTER WIDGET -->
+    <section class="widget-section padding">
+        <div class="container">
+            <div class="widget-wrap row">
+                <div class="col-md-4 xs-padding">
+                    <div class="widget-content">
+                        <img src="img/icons/logo.png" style="width:100%;" alt="logo">
+                        <p>वृंदावन के तीर्थ पुरोहितों की समस्त जानकारी के साथ वृंदावन के पुरातन महत्व का वर्णन करने वाली एक मात्र विषय वस्तु</p>
+                        <ul class="social-icon">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 xs-padding">
+                    <div class="widget-content text-center">
+                        <h3>मुख्य प्रकल्प</h3>
+                        <ul class="widget-link">
+                            <li><a href="#">माँ यमुना आरती प्रकल्प</a></li>
+                            <li><a href="#">तीर्थ पुरोहित सेवा प्रकल्प</a></li>
+                            <li><a href="#">गौ सेवा प्रकल्प</a></li>
+                            <li><a href="#">मोर-पक्षी सेवा प्रकल्प</a></li>
+                            <li><a href="#">बंदर सेवा प्रकल्प</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 xs-padding">
+                    <div class="widget-content">
+                        <h3>संपर्क करें</h3>
+                        <ul class="address">
+                            <li><i class="ti-email"></i> brijwasipandasabha@gmail.com</li>
+                            <li><i class="ti-mobile"></i> +91 98979 44277</li>
+                            <li><i class="ti-location-pin"></i> गौतम निवास, गौतम पाड़ा, महिला अस्पताल के सामने, वृंदावन</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRrOacNNYyhu6LXeliH_LhyGFCdJ72Z00zweO6gXl5GwH0Y2BL9NqYTqPaknGi2zVZW1sGFJFWjKzYH/pub?gid=0&single=true&output=csv";
+    <!-- FOOTER -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 sm-padding">
+                    <div class="copyright">&copy; श्री बृजवासी पंडा सभा, वृंदावन</div>
+                </div>
+                <div class="col-md-6 sm-padding">
+                    <ul class="footer-social">
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Report Problem</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <a data-scroll href="#header" id="scroll-to-top"><i class="arrow_up"></i></a>
+
+    <!-- JS -->
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/tether.min.js"></script>
+    <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="js/vendor/owl.carousel.min.js"></script>
+    <script src="js/vendor/jquery.isotope.v3.0.2.js"></script>
+    <script src="js/vendor/smooth-scroll.min.js"></script>
+    <script src="js/vendor/venobox.min.js"></script>
+    <script src="js/vendor/jquery.ajaxchimp.min.js"></script>
+    <script src="js/vendor/jquery.counterup.min.js"></script>
+    <script src="js/vendor/jquery.waypoints.v2.0.3.min.js"></script>
+    <script src="js/vendor/jquery.slicknav.min.js"></script>
+    <script src="js/vendor/jquery.nivo.slider.pack.js"></script>
+    <script src="js/vendor/letteranimation.min.js"></script>
+    <script src="js/vendor/wow.min.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+    // ================================================================
+    //  Google Sheet CSV URL — DO NOT CHANGE
+    // ================================================================
+    var SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRrOacNNYyhu6LXeliH_LhyGFCdJ72Z00zweO6gXl5GwH0Y2BL9NqYTqPaknGi2zVZW1sGFJFWjKzYH/pub?gid=0&single=true&output=csv";
+
+    // ================================================================
+    //  Parse CSV
+    // ================================================================
     function parseCSV(text) {
-      const lines = text.trim().split("\n");
-      if (lines.length < 2) return [];
-      const headers = lines[0].split(",").map(h => h.trim().replace(/^"|"$/g, "").trim());
-      return lines.slice(1).map(line => {
-        const cols = [];
-        let cur = "", inQ = false;
-        for (let ch of line) {
-          if (ch === '"') {
-            inQ = !inQ;
-          } else if (ch === ',' && !inQ) {
-            cols.push(cur);
-            cur = "";
-          } else {
-            cur += ch;
-          }
-        }
-        cols.push(cur);
-        const obj = {};
-        headers.forEach((h, i) => {
-          obj[h] = (cols[i] || "").trim().replace(/^"|"$/g, "").trim();
+        var lines = text.trim().split("\n");
+        if (lines.length < 2) return [];
+        var headers = lines[0].split(",").map(function(h) {
+            return h.trim().replace(/^"|"$/g, "").trim();
         });
-        return obj;
-      });
+        return lines.slice(1).map(function(line) {
+            var cols = [], cur = "", inQ = false;
+            for (var i = 0; i < line.length; i++) {
+                var ch = line[i];
+                if (ch === '"') { inQ = !inQ; }
+                else if (ch === ',' && !inQ) { cols.push(cur); cur = ""; }
+                else { cur += ch; }
+            }
+            cols.push(cur);
+            var obj = {};
+            headers.forEach(function(h, i) {
+                obj[h] = (cols[i] || "").trim().replace(/^"|"$/g, "").trim();
+            });
+            return obj;
+        });
     }
 
-    async function loadPurohit() {
-      const params = new URLSearchParams(window.location.search);
-      const searchID = params.get("searchID") || params.get("id");
+    // ================================================================
+    //  Get searchID from URL
+    // ================================================================
+    function getSearchID() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get("searchID") || params.get("id") || "";
+    }
 
-      if (!searchID) {
-        renderState("no-id");
-        return;
-      }
+    // ================================================================
+    //  Show error
+    // ================================================================
+    function showError(title, msg) {
+        document.getElementById("loading-wrap").style.display = "none";
+        document.getElementById("purohit-wrap").style.display = "none";
+        document.getElementById("error-wrap").style.display = "block";
+        document.getElementById("error-title").innerHTML = title;
+        document.getElementById("error-msg").innerHTML = msg;
+    }
 
-      try {
-        const res = await fetch(SHEET_CSV_URL + "&t=" + Date.now());
-        if (!res.ok) throw new Error("Sheet fetch failed");
-        const text = await res.text();
-        const rows = parseCSV(text);
-        const match = rows.find(r => r.enrollmentNo === searchID || r.enrollmentNo?.trim() === searchID.trim());
+    // ================================================================
+    //  Render purohit data
+    // ================================================================
+    function renderPurohit(d) {
+        document.getElementById("loading-wrap").style.display = "none";
+        document.getElementById("error-wrap").style.display = "none";
+        document.getElementById("purohit-wrap").style.display = "block";
 
-        if (!match) {
-          renderState("not-found", searchID);
-          return;
+        document.getElementById("lbl-enrollment").textContent = d.enrollmentNo || "—";
+        document.getElementById("lbl-form").textContent       = d.formNo || "—";
+        document.getElementById("lbl-name").textContent       = d.name || "—";
+        document.getElementById("lbl-father").textContent     = d.fatherName || "—";
+        document.getElementById("lbl-age").textContent        = d.age ? d.age + " वर्ष लगभग" : "—";
+        document.getElementById("lbl-gotra").textContent      = (d.gotra && d.gotra !== "") ? d.gotra : "सूचना उपलब्ध नही है";
+        document.getElementById("lbl-address").textContent    = d.address || "—";
+        document.getElementById("lbl-dehri").textContent      = d.dehri || "—";
+        document.getElementById("lbl-phone").textContent      = d.phone || "—";
+
+        var photo = document.getElementById("purohit-photo");
+        if (d.photoURL && d.photoURL.indexOf("http") === 0) {
+            photo.src = d.photoURL;
+            photo.style.display = "block";
+        } else {
+            photo.style.display = "none";
+        }
+    }
+
+    // ================================================================
+    //  Main load function
+    // ================================================================
+    function loadPurohit() {
+        var searchID = getSearchID();
+
+        if (!searchID) {
+            showError(
+                "कोई ID नहीं मिली",
+                "URL में searchID नहीं है।<br>कृपया सही QR कोड स्कैन करें।"
+            );
+            return;
         }
 
-        renderCard(match);
-      } catch (err) {
-        console.error(err);
-        renderState("error");
-      }
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", SHEET_CSV_URL + "&t=" + Date.now(), true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var rows = parseCSV(xhr.responseText);
+                var match = null;
+                for (var i = 0; i < rows.length; i++) {
+                    var val = (rows[i].enrollmentNo || "").trim();
+                    if (val === searchID.trim()) {
+                        match = rows[i];
+                        break;
+                    }
+                }
+                if (match) {
+                    renderPurohit(match);
+                } else {
+                    showError(
+                        "जानकारी उपलब्ध नहीं",
+                        "नामांकन संख्या <strong>" + searchID + "</strong> के लिए कोई रिकॉर्ड नहीं मिला।<br>" +
+                        "सही QR कोड स्कैन करें या संस्था से संपर्क करें।<br><br>" +
+                        "<i class='ti-mobile'></i> +91 98979 44277"
+                    );
+                }
+            } else {
+                showError("कनेक्शन त्रुटि", "डेटा लोड नहीं हो सका। इंटरनेट जांचें और पुनः प्रयास करें।");
+            }
+        };
+        xhr.onerror = function() {
+            showError("कनेक्शन त्रुटि", "डेटा लोड नहीं हो सका। इंटरनेट जांचें और पुनः प्रयास करें।");
+        };
+        xhr.send();
     }
 
-    function safeValue(value, fallback = "—") {
-      return value && String(value).trim() !== "" ? value : fallback;
-    }
+    // Run on page load
+    window.onload = function() {
+        loadPurohit();
+    };
+    </script>
 
-    function renderCard(d) {
-      document.getElementById("loading-state").style.display = "none";
-
-      const gotraVal = d.gotra && d.gotra.toLowerCase() !== "na" && d.gotra !== ""
-        ? `<div class="value">${d.gotra}</div>`
-        : `<div class="value na">सूचना उपलब्ध नही है</div>`;
-
-      const photoHTML = d.photoURL && d.photoURL.startsWith("http")
-        ? `<img src="${d.photoURL}" alt="${safeValue(d.name, 'Purohit Photo')}" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-           <div class="profile-image-placeholder" style="display:none;">🙏</div>`
-        : `<div class="profile-image-placeholder">🙏</div>`;
-
-      document.getElementById("main-content").innerHTML = `
-        <div class="profile-shell">
-          <div class="section-title">
-            <h2>तीर्थ पुरोहित</h2>
-          </div>
-
-          <div class="profile-content">
-            <div class="profile-image-box">
-              ${photoHTML}
-              <div class="verified-badge">✓ सत्यापित</div>
-            </div>
-
-            <div>
-              <div class="meta-row">
-                <div class="meta-card">
-                  <div class="k">नामांकन संख्या</div>
-                  <div class="v">${safeValue(d.enrollmentNo)}</div>
-                </div>
-                <div class="meta-card">
-                  <div class="k">फार्म संख्या</div>
-                  <div class="v">${safeValue(d.formNo)}</div>
-                </div>
-              </div>
-
-              <div class="contact-info">
-                <h3>पुरोहित जी का नाम :</h3>
-                <div class="value">${safeValue(d.name)}</div>
-              </div>
-              <div class="contact-info">
-                <h3>पिताजी का नाम :</h3>
-                <div class="value">${safeValue(d.fatherName)}</div>
-              </div>
-              <div class="contact-info">
-                <h3>उम्र :</h3>
-                <div class="value">${safeValue(d.age)} वर्ष लगभग</div>
-              </div>
-              <div class="contact-info">
-                <h3>पुरोहित जी का गोत्र :</h3>
-                ${gotraVal}
-              </div>
-              <div class="contact-info">
-                <h3>पुरोहित जी का निवास स्थल :</h3>
-                <div class="value">${safeValue(d.address)}</div>
-              </div>
-              <div class="contact-info">
-                <h3>पुरोहित जी की देहरी :</h3>
-                <div class="value">${safeValue(d.dehri)}</div>
-              </div>
-              <div class="contact-info">
-                <h3>पुरोहित जी का संपर्क सूत्र :</h3>
-                <div class="value"><a href="tel:${safeValue(d.phone, '')}">${safeValue(d.phone)}</a></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="certificate">
-            प्रमाणित किया जाता है कि उक्त व्यक्ति ब्रज वृंदावन के मूल बृजवासी तीर्थ पुरोहित एवं ब्रज की प्राचीनतम सभा श्री बृजवासी पंडा सभा के सम्मानित सदस्य हैं। तीर्थ में दर्शन पूजा अर्चना दान पुण्य इत्यादि कर्म कराने का धार्मिक अधिकार तीर्थ पुरोहित का है अतः तीर्थ पुरोहित का सम्मान करें। पूजा अर्चना दान आदि स्वेच्छा से करें।
-          </div>
-
-          <div class="sign-row">
-            <div class="signature-box">
-              <div class="signature-img">
-                <img src="rb.png" alt="Raghav Bhardwaj" style="max-height:62px;max-width:200px;object-fit:contain;" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','✍');">
-              </div>
-              <h4>राघव भारद्वाज</h4>
-              <h5>General Secretary</h5>
-            </div>
-            <div class="signature-box right">
-              <div class="signature-img">
-                <img src="ssg.png" alt="Shyam Sundar Gautam" style="max-height:62px;max-width:200px;object-fit:contain;" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','✍');">
-              </div>
-              <h4>श्याम सुंदर गौतम</h4>
-              <h5>President</h5>
-            </div>
-          </div>
-        </div>`;
-    }
-
-    function renderState(type, id) {
-      document.getElementById("loading-state").style.display = "none";
-      const msgs = {
-        "no-id": {
-          icon: "🔍",
-          title: "कोई ID नहीं मिली",
-          body: "URL में searchID नहीं है। कृपया सही QR कोड स्कैन करें।"
-        },
-        "not-found": {
-          icon: "❌",
-          title: "जानकारी उपलब्ध नहीं",
-          body: `नामांकन संख्या <strong>${id}</strong> के लिए कोई रिकॉर्ड नहीं मिला।<br>सही QR कोड स्कैन करें या संस्था से संपर्क करें।<br><br>📞 +91 98979 44277`
-        },
-        "error": {
-          icon: "⚠️",
-          title: "कनेक्शन त्रुटि",
-          body: "डेटा लोड नहीं हो सका। इंटरनेट जांचें और पुनः प्रयास करें।"
-        }
-      };
-
-      const m = msgs[type] || msgs.error;
-      document.getElementById("main-content").innerHTML = `
-        <div class="state-box">
-          <div class="state-icon">${m.icon}</div>
-          <h2>${m.title}</h2>
-          <p>${m.body}</p>
-        </div>`;
-    }
-
-    window.addEventListener("DOMContentLoaded", loadPurohit);
-  </script>
-
-  <script src="js/vendor/jquery-1.12.4.min.js"></script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/vendor/tether.min.js"></script>
-  <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
-  <script src="js/vendor/owl.carousel.min.js"></script>
-  <script src="js/vendor/jquery.isotope.v3.0.2.js"></script>
-  <script src="js/vendor/smooth-scroll.min.js"></script>
-  <script src="js/vendor/venobox.min.js"></script>
-  <script src="js/vendor/jquery.ajaxchimp.min.js"></script>
-  <script src="js/vendor/jquery.counterup.min.js"></script>
-  <script src="js/vendor/jquery.waypoints.v2.0.3.min.js"></script>
-  <script src="js/vendor/jquery.slicknav.min.js"></script>
-  <script src="js/vendor/jquery.nivo.slider.pack.js"></script>
-  <script src="js/vendor/letteranimation.min.js"></script>
-  <script src="js/vendor/wow.min.js"></script>
-  <script src="js/contact.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
