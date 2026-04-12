@@ -369,8 +369,8 @@
         document.getElementById("lbl-dehri").textContent      = d.dehri || "—";
         document.getElementById("lbl-phone").textContent      = d.phone || "—";
 
-        var photo = document.getElementById("purohit-photo");
-        if (d.photoURL && d.photoURL.indexOf("http") === 0) {
+        var photo = document.getElementById("ContentPlaceHolder1_imgPanda");
+        if (d.photoURL && d.photoURL.trim() !== "") {
             photo.src = d.photoURL;
             photo.style.display = "block";
         } else {
